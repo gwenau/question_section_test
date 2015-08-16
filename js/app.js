@@ -12,6 +12,9 @@
         {name: "Group 3: Attendant preference one", answer: null, required: false}
       ];
 
+      $scope.chunk_array = _.chunk($scope.questions, 2)
+      console.log($scope.chunk_array)
+
       $scope.answers = {};
 
       $scope.update = function(questions) {

@@ -13,35 +13,41 @@
       ];
 
       $scope.chunk_array = _.chunk($scope.questions, 2)
-      
-      $scope.chunk_show = function (chunk_array) {
-        var current_chunk = []
-        $scope.current_chunk = current_chunk
-        $scope.display_chunk = []
-        if (chunk_array) {
-          for (var i = 0, l = chunk_array.length; i < l; i++) {
-            $scope.current_chunk = chunk_array[i]
-            if ($scope.current_chunk) {
-              for (var i = 0, l = $scope.current_chunk.length; i < l; i++) {
-                $scope.display_chunk = $scope.current_chunk[i] 
-                for (var i = 0, l = $scope.display_chunk.length; i < l; i++) {
-                  if ($scope.display_chunk[i].answer == null)
-                    return false
-                  else
-                    return true
-                }
-              } 
-            }   
-          }
-        }
-      };
+      $scope.number = $scope.chunk_array.length
+      console.log($scope.chunk_array, $scope.number)
+      $scope.match_array = []
+      $scope.show_questions = function() {
+        for (var a = 0, al = $scope.chunk_array.length; a < al; a++) {
+          $scope.current_chunk = $scope.chunk_array[a]
+          console.log($scope.current_chunk)
+          for (var  b = 0, bl = $scope.current_chunk.length; b < bl; b++) {
+  
+              if ($scope.current_chunk[b].answer == null) {
 
-      $scope.chunk_show($scope.chunk_array)
+                console.log($scope.current_chunk[b])
+
+            }
+          }
+
+        } 
+      }
+
+
+      $scope.count_items = function (arr) {
+        if (arr.length == $scope.number)
+          return true
+        else 
+          return $scope.display_chunk;
+      }
+
+      $scope.show_questions()
 
       $scope.answers = {};
 
       $scope.update = function(questions) {
         $scope.answers = $scope.questions;
+        $scope.show_questions();
+        $scope.count_items($scope.match_array);
       };
 
       $scope.reset = function(arr){

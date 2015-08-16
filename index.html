@@ -11,7 +11,7 @@
     <div class="row">
       <div ng-controller="QuestionController">
         <form novalidate name="questionForm" class="form-horizontal">
-          <div ng-repeat="question in questions">
+          <div ng-repeat="question in current_chunk">
             <div class="form-group">
               <label id="question.name">{{question.name}}</label>
               <input class="form-control" for="question.name" ng-model="question.answer" ng-required="question.required">

@@ -13,7 +13,30 @@
       ];
 
       $scope.chunk_array = _.chunk($scope.questions, 2)
-      console.log($scope.chunk_array)
+      
+      $scope.chunk_show = function (chunk_array) {
+        var current_chunk = []
+        $scope.current_chunk = current_chunk
+        $scope.display_chunk = []
+        if (chunk_array) {
+          for (var i = 0, l = chunk_array.length; i < l; i++) {
+            $scope.current_chunk = chunk_array[i]
+            if ($scope.current_chunk) {
+              for (var i = 0, l = $scope.current_chunk.length; i < l; i++) {
+                $scope.display_chunk = $scope.current_chunk[i] 
+                for (var i = 0, l = $scope.display_chunk.length; i < l; i++) {
+                  if ($scope.display_chunk[i].answer == null)
+                    return false
+                  else
+                    return true
+                }
+              } 
+            }   
+          }
+        }
+      };
+
+      $scope.chunk_show($scope.chunk_array)
 
       $scope.answers = {};
 

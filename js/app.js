@@ -12,26 +12,36 @@
         {name: "Group 3: Attendant preference one", answer: null, required: false}
       ];
 
+      // Might need ot build array prototype for each submstion to pass.
+
+
       $scope.chunk_array = _.chunk($scope.questions, 2)
       $scope.number = $scope.chunk_array.length
       console.log($scope.chunk_array, $scope.number)
       $scope.match_array = []
+      $scope.current_chunk = []
       $scope.show_questions = function() {
         for (var a = 0, al = $scope.chunk_array.length; a < al; a++) {
-          $scope.current_chunk = $scope.chunk_array[a]
-          console.log($scope.current_chunk)
+          debugger
+          $scope.current_chunk = $scope.chunk_array[a]  
           for (var  b = 0, bl = $scope.current_chunk.length; b < bl; b++) {
-  
-              if ($scope.current_chunk[b].answer == null) {
-
-                console.log($scope.current_chunk[b])
-
+            debugger
+            if ($scope.current_chunk[b].answer == null) {
+              $scope.current_chunk = $scope.chunk_array[a]
+              // console.log("at b = 0", $scope.current_array[a])
+              return $scope.current_chunk
+            } else {
+              $scope.current_chunk = $scope.chunk_array[a+1];
+              console.log("at b = 1", $scope.chunk_array[a+1])
+              return $scope.current_chunk
             }
           }
-
         } 
+        console.log($scope.current_chunk)
+        return $scope.current_chunk
       }
 
+      $scope.show_questions();
 
       $scope.count_items = function (arr) {
         if (arr.length == $scope.number)

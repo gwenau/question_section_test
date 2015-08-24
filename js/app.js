@@ -23,7 +23,6 @@
         for (var a = $scope.c, al = $scope.chunk_array.length; a < al; a++) {
           $scope.current_chunk = $scope.chunk_array[a]  
           for (var  b = 0, bl = $scope.current_chunk.length; b < bl; b++) {
-
             if ($scope.current_chunk[b].answer == null) {
               $scope.current_chunk = $scope.chunk_array[a]
               return $scope.current_chunk
@@ -40,21 +39,11 @@
 
       $scope.show_questions();
 
-      $scope.count_items = function (arr) {
-        if (arr.length == $scope.number)
-          return true
-        else 
-          return $scope.display_chunk;
-      }
-
-      $scope.show_questions()
-
       $scope.answers = {};
 
       $scope.update = function(questions) {
         $scope.answers = $scope.questions;
         $scope.show_questions();
-        $scope.count_items($scope.match_array);
       };
 
       $scope.reset = function(arr){

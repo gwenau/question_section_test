@@ -51,9 +51,13 @@
           for (var i = 0, l = arr.length; i < l; i++ ) {
             arr[i].answer = null
           }
+          $scope.answers = {};
+          $scope.c = 0;
+          $scope.show_questions();
+          return 
         }
       else
-        return
+        return 
       };
 
     }
